@@ -1,0 +1,18 @@
+1. Observations about Overfitting:
+- Overfitting happens when the model remembers the training data too well instead of learning from it. This can make the model perform well on the training data but not so well on new data.
+- In our project, overfitting might happen if the model gets too complicated or if we don't use enough regularization.
+- The CNN setup we're using has a dropout layer with a dropout rate of 0.2 after the fully connected layer. Dropout helps avoid overfitting by randomly turning off some neurons during training. This makes the model rely less on specific neurons, which helps it generalize better.
+- We can tell if overfitting is happening if the training loss keeps going down but the testing loss starts going up or stays the same over time.
+
+2. Strategies for Overfitting Prevention in CNNs
+- The CNN tackles overfitting by using Dropout, Pooling, and regularization. Dropout stops neurons from depending too much on each other. Pooling simplifies spatial information to concentrate on important features. Regularization discourages complex models by punishing large weights. These methods help the model to generalize better, preventing it from memorizing only the training data and reducing overfitting.
+
+3. Dealing with Overfitting using Dropout:
+- Boosting the dropout rate from 0.2 to 0.3 post convolutional layers could aid in cutting down overfitting. A higher dropout rate implies more neurons are randomly excluded during training, potentially curbing the network's dependence on specific convolutional layer features.
+- Nevertheless, excessively hiking the dropout rate might result in underfitting, where the model fails to grasp ample data information. Hence, the dropout rate must be cautiously selected by trial and validation on a distinct validation set.
+
+4. Understanding Share Structure and Invariance Properties:
+- The share structure concept suggests that a model should grasp and utilize common features across various sections of the input data. In image classification, this implies that features learned in one part of an image should be applicable elsewhere too.
+- Invariance property hints that the model should stay steady against certain changes or alterations in the input data, like shifting, spinning, or resizing. For image classification, it means the model should correctly identify an object even if it's in different positions or angles within the image.
+- The CNN design in this project uses convolutional layers, which automatically learn to spot local patterns and features within the input images. Through weight sharing and pooling operations, CNNs can capture the share structure by extracting common features across different parts of the image.
+- Furthermore, CNNs inherently handle translations and local distortions due to the convolutional and pooling layers, which helps capture the invariance property. By learning hierarchical representations of features, CNNs can recognize objects even with changes in position, orientation, or size.
